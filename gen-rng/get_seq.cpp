@@ -20,6 +20,7 @@
 #include <cstdlib>
 #include <vector>
 #include <string>
+#include <sstream>
 #include <stdexcept>
 #include "rng.hpp"
 #ifdef _WIN32
@@ -44,6 +45,12 @@ namespace {
   };
 }
 
+template < typename T > std::string to_string_patch( const T& n ) {
+  std::ostringstream stm ;
+  stm << n ;
+  return stm.str() ;
+}
+
 // An int wrapper that throws if it's out of a defined range
 template<int min, int max> class RangedInt {
   const int value;
@@ -51,7 +58,7 @@ template<int min, int max> class RangedInt {
 public:
   RangedInt(int v, const char* n) : value(v), name(n) {
     if (v < min || v > max) {
-      throw std::out_of_range(std::string(name) + " must be between " + std::to_string(min) + " and " + std::to_string(max));
+      throw std::out_of_range(std::string(name) + " must be between " + to_string_patch(min) + " and " + to_string_patch(max));
     }
   }
   operator int() const { return value; }

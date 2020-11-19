@@ -17,7 +17,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 ifeq ($(OS),Windows_NT)
-  CPP := cl -EHsc -Fe
+  CPP := g++ -g -std=c++11 -o
   EXT := .exe
 else
   CPP := g++ -g -std=c++11 -o

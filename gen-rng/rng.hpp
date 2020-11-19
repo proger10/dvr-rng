@@ -20,6 +20,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include <cstdio>
 
 struct rng{	
 	static int LCG(uint32_t &s) // Simple LCG RNG
